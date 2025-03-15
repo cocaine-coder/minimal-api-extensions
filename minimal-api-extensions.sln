@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalApi.Validation.Sourc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationSourceGeneration", "examples\ValidationSourceGeneration\ValidationSourceGeneration.csproj", "{272F7EC2-2B7C-4556-A8A9-8A21643A09FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalApi.AutoDependencyInjection", "src\MinimalApi.AutoDependencyInjection\MinimalApi.AutoDependencyInjection.csproj", "{ED92928D-E479-4008-9DCD-AF7BAE7DBF95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalApi.AutoDependencyInjection.SourceGeneration", "src\MinimalApi.AutoDependencyInjection\MinimalApi.AutoDependencyInjection.SourceGeneration.csproj", "{ED92928D-E479-4008-9DCD-AF7BAE7DBF95}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoDependencyInjectionTest", "examples\AutoDependencyInjection\AutoDependencyInjectionTest.csproj", "{EC72E839-E2EB-4CCD-A6F4-006110366E43}"
 EndProject

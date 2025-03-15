@@ -6,7 +6,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
 
-namespace MinimalApi.AutoDependencyInjection;
+namespace MinimalApi.AutoDependencyInjection.SourceGeneration;
 
 
 [Generator]
