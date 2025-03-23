@@ -22,6 +22,7 @@ app.MapGet("/greet", ([FromServices] IGreetService greetService, string name) =>
 app.Run();
 
 
+[JsonSerializable(typeof(double))]
 [JsonSerializable(typeof(string))]
 internal partial class AppJsonSerializerContext : JsonSerializerContext
 {

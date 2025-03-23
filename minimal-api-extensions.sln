@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalApi.Extensions.Abstr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalApi.Extensions.Example", "examples\MinimalApi.Extensions.Example\MinimalApi.Extensions.Example.csproj", "{3063D173-C2FF-4F98-AA7B-ECF6E0574317}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalApi.Extensions.Example.Abstractions", "examples\MinimalApi.Extensions.Example.Abstractions\MinimalApi.Extensions.Example.Abstractions.csproj", "{887F5CC1-434E-47CD-9908-8F01B721B0A8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,10 +37,6 @@ Global
 		{3063D173-C2FF-4F98-AA7B-ECF6E0574317}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3063D173-C2FF-4F98-AA7B-ECF6E0574317}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3063D173-C2FF-4F98-AA7B-ECF6E0574317}.Release|Any CPU.Build.0 = Release|Any CPU
-		{887F5CC1-434E-47CD-9908-8F01B721B0A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{887F5CC1-434E-47CD-9908-8F01B721B0A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{887F5CC1-434E-47CD-9908-8F01B721B0A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{887F5CC1-434E-47CD-9908-8F01B721B0A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,7 +46,6 @@ Global
 		{EFF310E2-240B-8E93-799A-C27EAACCC0D3} = {783DC1A7-BF16-4AC6-8037-0245354B9FBA}
 		{85C6BC7C-227C-4F97-A14B-679D51E19E57} = {783DC1A7-BF16-4AC6-8037-0245354B9FBA}
 		{3063D173-C2FF-4F98-AA7B-ECF6E0574317} = {66EB0E1D-D80D-47B4-B73D-5BA997FED06D}
-		{887F5CC1-434E-47CD-9908-8F01B721B0A8} = {66EB0E1D-D80D-47B4-B73D-5BA997FED06D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {282AD3CC-50FC-45FC-B947-4C6B239239D8}
