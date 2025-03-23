@@ -1,0 +1,8 @@
+@MinimalApi.Extensions.Example_HostAddress = http://localhost:5194
+
+GET {{MinimalApi.Extensions.Example_HostAddress}}/greet?name=nick
+Accept: application/json
+
+###
+
+###
