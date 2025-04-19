@@ -4,21 +4,21 @@ namespace MinimalApi.Extensions.HttpResults;
 
 public static class Extensions
 {
-    public static Microsoft.AspNetCore.Http.HttpResults.Ok<HttpResultModel<T>> Ok<T>(this IResultExtensions resultExtensions, T data)
+    public static Custom200OkResult<T> Ok<T>(this IResultExtensions resultExtensions, T? data = default)
     {
         ArgumentNullException.ThrowIfNull(resultExtensions);
-        return TypedResults.Ok(HttpResultModel<T>.Ok(data));
+        return new Custom200OkResult<T>(data);
     }
 
-    public static Microsoft.AspNetCore.Http.HttpResults.Ok<HttpResultModel> OkObject(this IResultExtensions resultExtensions, object? data = null)
+    public static Custom200OkResult<object?> Ok(this IResultExtensions resultExtensions)
     {
         ArgumentNullException.ThrowIfNull(resultExtensions);
-        return TypedResults.Ok(HttpResultModel.Ok(data));
+        return new Custom200OkResult<object?>(null);
     }
 
-    public static Microsoft.AspNetCore.Http.HttpResults.Ok<HttpResultModel> Bad(this IResultExtensions resultExtensions, object error)
+    public static Custom200BadResult Bad(this IResultExtensions resultExtensions, string error)
     {
         ArgumentNullException.ThrowIfNull(resultExtensions);
-        return TypedResults.Ok(HttpResultModel.Bad(error));
+        return new Custom200BadResult(error);
     }
 }

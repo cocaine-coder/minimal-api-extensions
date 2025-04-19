@@ -1,15 +1,18 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using MinimalApi.Extensions;
 using MinimalApi.Extensions.Example.Services;
 using MinimalApi.Extensions.HttpResults;
 using MinimalApi.Extensions.Scalar;
 using MinimalApi.Extensions.Security;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateSlimBuilder(args);
 
 builder.Services.ConfigureHttpJsonOptions(options =>
 {
     options.SerializerOptions.TypeInfoResolverChain.Insert(0, MiminalApiJsonSerializerContext.Default);
+    options.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonSerializerContext.Default);
 });
 
 builder.Services.AddJwtBearer(new CustomJwtBearerOptions() { SecretKey = "forbidden_watch_123123asdfasfsafsadfsfsa" });
@@ -21,19 +24,46 @@ var app = builder.Build();
 
 app.MapGet("/greet", ([FromServices] IGreetService greetService, string name) =>
 {
-    return Results.Ok(greetService.SayHello(name));
+    return TypedResults.Ok(greetService.SayHello(name));
 }).RequireAuthorization();
 
 app.MapPost("login", ([FromServices] IJwtTokenGenerator jwtTokenGenerator) =>
 {
-    return TypedResults.Extensions.OkObject(jwtTokenGenerator.GenerateToken());
-}).Produces<JwtTokenResponse>();
+    return TypedResults.Extensions.Ok(jwtTokenGenerator.GenerateToken());
+});
 
-app.MapGet("json", () =>
+app.MapGet("result-null", () =>
+{
+    bool? value = null;
+    return TypedResults.Extensions.Ok(value);
+});
+
+app.MapGet("result-empty", () =>
+{
+    return TypedResults.Extensions.Ok();
+});
+
+app.MapGet("result-bad", () =>
 {
     return TypedResults.Extensions.Bad("1223123");
 });
 
+app.MapGet("result-mul", GetResultMul);
+
+Results<Custom200BadResult, Custom200OkResult<int>> GetResultMul(int code)
+{
+    if (code == 0) return TypedResults.Extensions.Ok(123);
+    else return TypedResults.Extensions.Bad("123");
+}
+
 app.MapScalar();
 
 app.Run();
+
+[JsonSerializable(typeof(string))]
+[JsonSerializable(typeof(int))]
+[JsonSerializable(typeof(bool?))]
+public partial class AppJsonSerializerContext : JsonSerializerContext
+{
+
+}
