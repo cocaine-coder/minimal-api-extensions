@@ -1,4 +1,3 @@
-using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using MinimalApi.Extensions;
 using MinimalApi.Extensions.Example.Services;
@@ -27,12 +26,12 @@ app.MapGet("/greet", ([FromServices] IGreetService greetService, string name) =>
 
 app.MapPost("login", ([FromServices] IJwtTokenGenerator jwtTokenGenerator) =>
 {
-    return TypedResults.Extensions.Ok(jwtTokenGenerator.GenerateToken());
+    return TypedResults.Extensions.OkObject(jwtTokenGenerator.GenerateToken());
 }).Produces<JwtTokenResponse>();
 
 app.MapGet("json", () =>
 {
-    return TypedResults.Ok("123123");
+    return TypedResults.Extensions.Bad("1223123");
 });
 
 app.MapScalar();
