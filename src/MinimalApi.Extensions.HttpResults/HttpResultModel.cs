@@ -20,7 +20,7 @@ public sealed class HttpResultModel
         Error = error;
     }
 
-    public static HttpResultModel Bad(object? error)
+    public static HttpResultModel Bad(object error)
     {
         return new HttpResultModel(false, null, error);
     }

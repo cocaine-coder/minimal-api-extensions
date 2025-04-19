@@ -51,17 +51,11 @@ public class CustomJwtBearerOptions
             ClockSkew = TimeSpan.FromSeconds(AccessTokenExpirySeconds),
         };
 
-        if (Issuer is not null)
-        {
-            parameters.ValidateIssuer = true;
-            parameters.ValidIssuer = Issuer;
-        }
+        parameters.ValidateIssuer = !string.IsNullOrWhiteSpace(Issuer);
+        parameters.ValidIssuer = Issuer;
 
-        if (Audience is not null)
-        {
-            parameters.ValidateAudience = true;
-            parameters.ValidAudience = Audience;
-        }
+        parameters.ValidateAudience = !string.IsNullOrWhiteSpace(Audience);
+        parameters.ValidAudience = Audience;
 
         return parameters;
     }

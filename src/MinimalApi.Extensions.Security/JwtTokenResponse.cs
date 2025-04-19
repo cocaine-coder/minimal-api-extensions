@@ -1,6 +1,6 @@
 ﻿namespace MinimalApi.Extensions.Security;
 
-public class TokenResponse
+public class JwtTokenResponse
 {
     public required string AccessToken { get; init; }
 

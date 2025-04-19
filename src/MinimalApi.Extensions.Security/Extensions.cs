@@ -16,8 +16,8 @@ public static class JwtBearerExtensions
     public static IServiceCollection AddJwtBearer(
         this IServiceCollection services,
         CustomJwtBearerOptions options,
-        Action<JwtBearerOptions>? customJwtBearerOptionsConfigure,
-        Action<AuthorizationOptions>? authorizationOptionsConfigure)
+        Action<JwtBearerOptions>? customJwtBearerOptionsConfigure = default,
+        Action<AuthorizationOptions>? authorizationOptionsConfigure = default)
     {
 
         services.AddAuthentication(options =>

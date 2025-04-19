@@ -4,13 +4,13 @@ namespace MinimalApi.Extensions.HttpResults;
 
 public partial class CustomResults {
 
-    public static IResult Ok(object data)
+    public static Microsoft.AspNetCore.Http.HttpResults.Ok<HttpResultModel> Ok(object? data = null)
     {
-        return Results.Ok(HttpResultModel.Ok(data));
+        return TypedResults.Ok(HttpResultModel.Ok(data));
     }
 
-    public static IResult Bad(object? error)
+    public static Microsoft.AspNetCore.Http.HttpResults.Ok<HttpResultModel> Bad(object error)
     {
-        return Results.Ok(HttpResultModel.Bad(error));
+        return TypedResults.Ok(HttpResultModel.Bad(error));
     }
 }

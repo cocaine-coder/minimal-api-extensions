@@ -7,14 +7,14 @@ namespace MinimalApi.Extensions.Security;
 
 public interface IJwtTokenGenerator
 {
-    TokenResponse GenerateToken(IEnumerable<Claim>? claims = default);
+    JwtTokenResponse GenerateToken(IEnumerable<Claim>? claims = default);
 
-    TokenResponse? RefreshToken<T>(T request) where T : RefreshTokenRequest; 
+    JwtTokenResponse? RefreshToken<T>(T request) where T : RefreshTokenRequest; 
 }
 
 internal class JwtTokenGenerator(CustomJwtBearerOptions options) : IJwtTokenGenerator
 {
-    public TokenResponse GenerateToken(IEnumerable<Claim>? claims = default)
+    public JwtTokenResponse GenerateToken(IEnumerable<Claim>? claims = default)
     {
         var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(options.SecretKey));
@@ -40,7 +40,7 @@ internal class JwtTokenGenerator(CustomJwtBearerOptions options) : IJwtTokenGene
             refreshTokenExpiries,
             signingCredentials);
 
-        return new TokenResponse()
+        return new JwtTokenResponse()
         {
             AccessToken = jwtSecurityTokenHandler.WriteToken(accessToken),
             RefreshToken = jwtSecurityTokenHandler.WriteToken(refreshToken),
@@ -49,7 +49,7 @@ internal class JwtTokenGenerator(CustomJwtBearerOptions options) : IJwtTokenGene
         };
     }
 
-    public TokenResponse? RefreshToken<T>(T request) where T : RefreshTokenRequest
+    public JwtTokenResponse? RefreshToken<T>(T request) where T : RefreshTokenRequest
     {
         var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
 
