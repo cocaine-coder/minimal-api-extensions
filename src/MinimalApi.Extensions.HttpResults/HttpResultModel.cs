@@ -12,7 +12,6 @@ public sealed class HttpResultModel
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public object? Error { get; init; }
 
-
     private HttpResultModel(bool success, object? data, object? error)
     {
         Data = data;
@@ -27,6 +26,6 @@ public sealed class HttpResultModel
 
     public static HttpResultModel Ok(object? data = null)
     {
-        return new HttpResultModel(true, data ?? new { }, null);
+        return new HttpResultModel(true, data, null);
     }
 }

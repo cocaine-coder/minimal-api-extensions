@@ -27,12 +27,12 @@ app.MapGet("/greet", ([FromServices] IGreetService greetService, string name) =>
 
 app.MapPost("login", ([FromServices] IJwtTokenGenerator jwtTokenGenerator) =>
 {
-    return CustomResults.Ok(jwtTokenGenerator.GenerateToken());
+    return TypedResults.Extensions.Ok(jwtTokenGenerator.GenerateToken());
 }).Produces<JwtTokenResponse>();
 
 app.MapGet("json", () =>
 {
-    return TypedResults.Ok(new List<int> { 12, 23, 1 });
+    return TypedResults.Ok("123123");
 });
 
 app.MapScalar();
