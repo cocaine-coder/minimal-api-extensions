@@ -1,4 +1,4 @@
-﻿using MinimalApi.Extensions.Abstractions.Attributes;
+﻿using MinimalApi.Extensions.Attributes;
 
 namespace MinimalApi.Extensions.Example.Services;
 

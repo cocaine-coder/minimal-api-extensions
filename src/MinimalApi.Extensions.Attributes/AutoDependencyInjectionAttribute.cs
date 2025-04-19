@@ -1,7 +1,6 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace MinimalApi.Extensions.Abstractions.Attributes
+namespace MinimalApi.Extensions.Attributes
 {
 
     [AttributeUsage(AttributeTargets.Class)]

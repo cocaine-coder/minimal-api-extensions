@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{783DC1A7-BF16-4AC6-8037-0245354B9FBA}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{66EB0E1D-D80D-47B4-B73D-5BA997FED06D}"
 EndProject
@@ -11,9 +14,22 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalApi.Extensions.Sourc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalApi.Extensions", "src\MinimalApi.Extensions\MinimalApi.Extensions.csproj", "{EFF310E2-240B-8E93-799A-C27EAACCC0D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalApi.Extensions.Abstractions", "src\MinimalApi.Extensions.Abstractions\MinimalApi.Extensions.Abstractions.csproj", "{85C6BC7C-227C-4F97-A14B-679D51E19E57}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalApi.Extensions.Example", "examples\MinimalApi.Extensions.Example\MinimalApi.Extensions.Example.csproj", "{3063D173-C2FF-4F98-AA7B-ECF6E0574317}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{87A0BC58-3EDC-4702-B04E-E4375CD6AA56}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\publish-to-nuget.yml = .github\workflows\publish-to-nuget.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalApi.Extensions.HttpResults", "src\MinimalApi.Extensions.HttpResults\MinimalApi.Extensions.HttpResults.csproj", "{D1FAFEF3-1A5C-4FBA-B910-36FF613D9C02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalApi.Extensions.Validation", "src\MinimalApi.Extensions.Validation\MinimalApi.Extensions.Validation.csproj", "{CE2E960D-6C36-4B24-B9F1-F9A45BB3497B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalApi.Extensions.Security", "src\MinimalApi.Extensions.Security\MinimalApi.Extensions.Security.csproj", "{0CDF3AF9-9AC8-0AAD-F467-F9B5331D3F07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalApi.Extensions.Attributes", "src\MinimalApi.Extensions.Attributes\MinimalApi.Extensions.Attributes.csproj", "{2B34CDCD-C93F-2384-5309-6B396B9F2CE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,14 +45,26 @@ Global
 		{EFF310E2-240B-8E93-799A-C27EAACCC0D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFF310E2-240B-8E93-799A-C27EAACCC0D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFF310E2-240B-8E93-799A-C27EAACCC0D3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{85C6BC7C-227C-4F97-A14B-679D51E19E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{85C6BC7C-227C-4F97-A14B-679D51E19E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{85C6BC7C-227C-4F97-A14B-679D51E19E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{85C6BC7C-227C-4F97-A14B-679D51E19E57}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3063D173-C2FF-4F98-AA7B-ECF6E0574317}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3063D173-C2FF-4F98-AA7B-ECF6E0574317}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3063D173-C2FF-4F98-AA7B-ECF6E0574317}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3063D173-C2FF-4F98-AA7B-ECF6E0574317}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1FAFEF3-1A5C-4FBA-B910-36FF613D9C02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1FAFEF3-1A5C-4FBA-B910-36FF613D9C02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1FAFEF3-1A5C-4FBA-B910-36FF613D9C02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1FAFEF3-1A5C-4FBA-B910-36FF613D9C02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE2E960D-6C36-4B24-B9F1-F9A45BB3497B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE2E960D-6C36-4B24-B9F1-F9A45BB3497B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE2E960D-6C36-4B24-B9F1-F9A45BB3497B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE2E960D-6C36-4B24-B9F1-F9A45BB3497B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CDF3AF9-9AC8-0AAD-F467-F9B5331D3F07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CDF3AF9-9AC8-0AAD-F467-F9B5331D3F07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CDF3AF9-9AC8-0AAD-F467-F9B5331D3F07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CDF3AF9-9AC8-0AAD-F467-F9B5331D3F07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B34CDCD-C93F-2384-5309-6B396B9F2CE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B34CDCD-C93F-2384-5309-6B396B9F2CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B34CDCD-C93F-2384-5309-6B396B9F2CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B34CDCD-C93F-2384-5309-6B396B9F2CE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,8 +72,12 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D9E26932-E958-4E9C-8829-453D4132903C} = {783DC1A7-BF16-4AC6-8037-0245354B9FBA}
 		{EFF310E2-240B-8E93-799A-C27EAACCC0D3} = {783DC1A7-BF16-4AC6-8037-0245354B9FBA}
-		{85C6BC7C-227C-4F97-A14B-679D51E19E57} = {783DC1A7-BF16-4AC6-8037-0245354B9FBA}
 		{3063D173-C2FF-4F98-AA7B-ECF6E0574317} = {66EB0E1D-D80D-47B4-B73D-5BA997FED06D}
+		{87A0BC58-3EDC-4702-B04E-E4375CD6AA56} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{D1FAFEF3-1A5C-4FBA-B910-36FF613D9C02} = {783DC1A7-BF16-4AC6-8037-0245354B9FBA}
+		{CE2E960D-6C36-4B24-B9F1-F9A45BB3497B} = {783DC1A7-BF16-4AC6-8037-0245354B9FBA}
+		{0CDF3AF9-9AC8-0AAD-F467-F9B5331D3F07} = {783DC1A7-BF16-4AC6-8037-0245354B9FBA}
+		{2B34CDCD-C93F-2384-5309-6B396B9F2CE9} = {783DC1A7-BF16-4AC6-8037-0245354B9FBA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {282AD3CC-50FC-45FC-B947-4C6B239239D8}

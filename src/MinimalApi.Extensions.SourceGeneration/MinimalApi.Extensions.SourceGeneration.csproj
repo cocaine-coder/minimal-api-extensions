@@ -1,9 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>netstandard2.0</TargetFramework>
-		<LangVersion>11</LangVersion>
+		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
-		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -15,6 +13,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\MinimalApi.Extensions.Abstractions\MinimalApi.Extensions.Abstractions.csproj" />
+	  <ProjectReference Include="..\MinimalApi.Extensions.Attributes\MinimalApi.Extensions.Attributes.csproj" />
 	</ItemGroup>
 </Project>

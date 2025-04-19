@@ -4,7 +4,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
-using MinimalApi.Extensions.Abstractions.Attributes;
+using MinimalApi.Extensions.Attributes;
 
 namespace MinimalApi.Extensions.SourceGeneration;
 
