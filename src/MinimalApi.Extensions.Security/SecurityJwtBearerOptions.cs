@@ -3,7 +3,7 @@ using System.Text;
 
 namespace MinimalApi.Extensions.Security;
 
-public class CustomJwtBearerOptions
+public class SecurityJwtBearerOptions
 {
     public string? Issuer { get; init; }
 
@@ -42,20 +42,20 @@ public class CustomJwtBearerOptions
 
     public TokenValidationParameters CreateTokenValidationParameters(bool validateLifetime)
     {
-        var parameters = new TokenValidationParameters()
+        var parameters = new TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,
-            ValidateLifetime = validateLifetime,
-
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SecretKey)),
+
+            ValidateLifetime = validateLifetime,
             ClockSkew = TimeSpan.FromSeconds(AccessTokenExpirySeconds),
+
+            ValidateIssuer = !string.IsNullOrWhiteSpace(Issuer),
+            ValidIssuer = Issuer,
+
+            ValidateAudience = !string.IsNullOrWhiteSpace(Audience),
+            ValidAudience = Audience
         };
-
-        parameters.ValidateIssuer = !string.IsNullOrWhiteSpace(Issuer);
-        parameters.ValidIssuer = Issuer;
-
-        parameters.ValidateAudience = !string.IsNullOrWhiteSpace(Audience);
-        parameters.ValidAudience = Audience;
 
         return parameters;
     }

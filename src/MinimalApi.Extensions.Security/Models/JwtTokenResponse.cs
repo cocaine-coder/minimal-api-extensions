@@ -1,4 +1,4 @@
-﻿namespace MinimalApi.Extensions.Security;
+﻿namespace MinimalApi.Extensions.Security.Models;
 
 public class JwtTokenResponse
 {

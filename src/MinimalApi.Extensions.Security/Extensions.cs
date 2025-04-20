@@ -15,11 +15,10 @@ public static class JwtBearerExtensions
     /// <returns></returns>
     public static IServiceCollection AddJwtBearer(
         this IServiceCollection services,
-        CustomJwtBearerOptions options,
+        SecurityJwtBearerOptions options,
         Action<JwtBearerOptions>? customJwtBearerOptionsConfigure = default,
         Action<AuthorizationOptions>? authorizationOptionsConfigure = default)
     {
-
         services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -57,8 +56,13 @@ public static class JwtBearerExtensions
             services.AddAuthorization();
         }
 
+        services.ConfigureHttpJsonOptions(o =>
+        {
+            o.SerializerOptions.TypeInfoResolverChain.Insert(0, SecurityJsonSerializerContext.Default);
+        });
+
         services.AddSingleton(options);
-        services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
+        services.AddSingleton<SecurityJwtTokenService>();
 
         return services;
     }

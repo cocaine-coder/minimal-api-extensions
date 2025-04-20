@@ -16,12 +16,7 @@ builder.Services.ConfigureHttpJsonOptions(options =>
     options.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonSerializerContext.Default);
 });
 
-builder.Services.ConfigureHttpJsonOptions(options =>
-{
-    options.SerializerOptions.TypeInfoResolverChain.Insert(0, MiminalApiJsonSerializerContext.Default);
-});
-
-builder.Services.AddJwtBearer(new CustomJwtBearerOptions() { SecretKey = "forbidden_watch_123123asdfasfsafsadfsfsa" });
+builder.Services.AddJwtBearer(new SecurityJwtBearerOptions() { SecretKey = "forbidden_watch_123123asdfasfsafsadfsfsa" });
 builder.Services.AddScalar(o => { o.UseJwtBearer = true; });
 
 builder.Services.AddAutoValidation().RegisterAllValidators();
@@ -39,9 +34,9 @@ app.MapGet("/greet", ([FromServices] IGreetService greetService, string name) =>
     return TypedResults.Ok(greetService.SayHello(name));
 }).RequireAuthorization();
 
-app.MapPost("login", ([FromServices] IJwtTokenGenerator jwtTokenGenerator) =>
+app.MapPost("login", ([FromServices] SecurityJwtTokenService jwtTokenService) =>
 {
-    return TypedResults.Extensions.Ok(jwtTokenGenerator.GenerateToken());
+    return TypedResults.Extensions.Ok(jwtTokenService.GenerateToken());
 });
 
 app.MapGet("result-null", () =>

@@ -15,6 +15,10 @@ public static partial class ServiceCollectionExtensions
         services.Configure<ValidationFilterConfiguration>(config =>
             configurationBuilder?.Invoke(config)
         );
+        services.ConfigureHttpJsonOptions(o =>
+        {
+            o.SerializerOptions.TypeInfoResolverChain.Insert(0, ValidationJsonSerializerContext.Default);
+        });
         return services;
     }
 }

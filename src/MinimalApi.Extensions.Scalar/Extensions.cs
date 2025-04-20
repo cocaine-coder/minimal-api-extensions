@@ -20,13 +20,7 @@ public static class Extensions
 
             opt.AddDocumentTransformer((doc, ctx, _) =>
             {
-                doc.Info = new Microsoft.OpenApi.Models.OpenApiInfo
-                {
-                    Title = options.Title,
-                    Description = options.Description,
-                    Version = options.Version
-                };
-
+                options.OpenApiInfoAction?.Invoke(doc.Info);
                 return Task.CompletedTask;
             });
         });

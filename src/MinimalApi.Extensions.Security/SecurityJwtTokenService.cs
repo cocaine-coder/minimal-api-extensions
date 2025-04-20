@@ -1,18 +1,12 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using MinimalApi.Extensions.Security.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
 namespace MinimalApi.Extensions.Security;
 
-public interface IJwtTokenGenerator
-{
-    JwtTokenResponse GenerateToken(IEnumerable<Claim>? claims = default);
-
-    JwtTokenResponse? RefreshToken<T>(T request) where T : RefreshTokenRequest; 
-}
-
-internal class JwtTokenGenerator(CustomJwtBearerOptions options) : IJwtTokenGenerator
+public class SecurityJwtTokenService(SecurityJwtBearerOptions options)
 {
     public JwtTokenResponse GenerateToken(IEnumerable<Claim>? claims = default)
     {
