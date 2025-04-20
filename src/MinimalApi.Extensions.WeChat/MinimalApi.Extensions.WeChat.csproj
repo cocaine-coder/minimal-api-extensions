@@ -1,19 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
 	<PropertyGroup>
-	  <PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="README.md" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Content Include="README.md">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </Content>
+		<None Include="README.md" Pack="True" PackagePath="\"/>
 	</ItemGroup>
 
 	<ItemGroup>

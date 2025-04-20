@@ -2,15 +2,11 @@
 	<PropertyGroup>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
+	
 	<ItemGroup>
-	  <None Remove="README.md" />
+		<None Include="README.md" Pack="True" PackagePath="\"/>
 	</ItemGroup>
-	<ItemGroup>
-	  <Content Include="README.md">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </Content>
-	</ItemGroup>
+	
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
