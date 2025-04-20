@@ -4,16 +4,10 @@ namespace MinimalApi.Extensions.Attributes
 {
 
     [AttributeUsage(AttributeTargets.Class)]
-    public class AutoDependencyInjectionAttribute : Attribute
+    public class AutoDependencyInjectionAttribute(ServiceLifetime lifetime, Type? interfaceType = null) : Attribute
     {
-        public ServiceLifetime Lifetime { get; private set; }
+        public ServiceLifetime Lifetime { get; private set; } = lifetime;
 
-        public Type InterfaceType { get; private set; }
-
-        public AutoDependencyInjectionAttribute(ServiceLifetime lifetime, Type interfaceType = null)
-        {
-            Lifetime = lifetime;
-            InterfaceType = interfaceType;
-        }
+        public Type? InterfaceType { get; private set; } = interfaceType;
     }
 }

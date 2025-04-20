@@ -5,14 +5,19 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	  <None Remove="README.md" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="README.md">
+	  <Content Include="README.md">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
-	  </None>
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
 
 </Project>

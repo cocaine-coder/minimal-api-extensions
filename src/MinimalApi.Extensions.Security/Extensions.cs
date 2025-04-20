@@ -23,8 +23,9 @@ public static class JwtBearerExtensions
     /// <a href="https://learn.microsoft.com/zh-cn/aspnet/core/fundamentals/minimal-apis/security?view=aspnetcore-9.0">配置文档</a>
     /// </summary>
     /// <param name="services"></param>
-    /// <param name="optionsCreator"></param>
-    /// <param name="customJwtBearerOptionsConfigure">
+    /// <param name="options"></param>
+    /// <param name="jwtBearerOptionsAction"></param>
+    /// <param name="authorizationOptionsAction"></param>
     /// <returns></returns>
     public static IServiceCollection AddJwtBearer(
         this IServiceCollection services,

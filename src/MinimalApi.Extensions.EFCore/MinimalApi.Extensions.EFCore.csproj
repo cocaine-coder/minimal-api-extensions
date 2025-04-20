@@ -2,6 +2,14 @@
 
   <PropertyGroup>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="README.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="README.md" />
+  </ItemGroup>
 	
   <ItemGroup>
 	  <PackageReference Include="EFCore.NamingConventions" Version="9.0.0" />

@@ -9,7 +9,7 @@ public class SecurityJwtBearerOptions
 
     public string? Audience { get; set; }
 
-    public string SecretKey { get; set; } = string.Empty;
+    public required string SecretKey { get; init; }
 
     /// <summary>
     /// default: 3600
@@ -38,7 +38,7 @@ public class SecurityJwtBearerOptions
     /// <summary>
     /// 
     /// </summary>
-    public string RefreshEndpointRole { get; set; } = "api_refresh";
+    public string RefreshEndpointRole { get; set; } = "api_refresh_token";
 
     public TokenValidationParameters CreateTokenValidationParameters(bool validateLifetime)
     {
