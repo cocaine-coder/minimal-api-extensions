@@ -26,4 +26,10 @@ public static class RouterBuilderExtensions
 
     public static RouteHandlerBuilder AddValidationFilter(this RouteHandlerBuilder builder) =>
         builder.AddEndpointFilter<ValidationFilter>();
+
+    public static RouteGroupBuilder AddValidationFilter<T>(this RouteGroupBuilder builder) where T : class =>
+       builder.AddEndpointFilter<ValidationFilter<T>>();
+
+    public static RouteHandlerBuilder AddValidationFilter<T>(this RouteHandlerBuilder builder) where T: class =>
+        builder.AddEndpointFilter<ValidationFilter<T>>();
 }
