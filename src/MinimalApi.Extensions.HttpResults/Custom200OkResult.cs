@@ -46,3 +46,18 @@ public class Custom200BadResult(string error) : IResult, IEndpointMetadataProvid
         await httpContext.Response.WriteAsync($$"""{"success":false,"error":{{error}}}""");
     }
 }
+
+public class Custom200BadWithCodeResult(int code, string error) : IResult, IEndpointMetadataProvider
+{
+    public static void PopulateMetadata(MethodInfo method, EndpointBuilder builder)
+    {
+        builder.Metadata.Add(new ProducesResponseTypeMetadata(StatusCodes.Status200OK, typeof(string), ["application/json"]));
+    }
+
+    public async Task ExecuteAsync(HttpContext httpContext)
+    {
+        httpContext.Response.StatusCode = StatusCodes.Status200OK;
+        httpContext.Response.ContentType = "application/json";
+        await httpContext.Response.WriteAsync($$"""{"success":false,"code":{{code}},"error":{{error}}}""");
+    }
+}

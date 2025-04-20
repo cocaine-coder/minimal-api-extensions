@@ -5,40 +5,40 @@ namespace MinimalApi.Extensions.Security;
 
 public class SecurityJwtBearerOptions
 {
-    public string? Issuer { get; init; }
+    public string? Issuer { get; set; }
 
-    public string? Audience { get; init; }
+    public string? Audience { get; set; }
 
-    public required string SecretKey { get; init; }
+    public string SecretKey { get; set; } = string.Empty;
 
     /// <summary>
     /// default: 3600
     /// </summary>
-    public int AccessTokenExpirySeconds { get; init; } = 3600;
+    public int AccessTokenExpirySeconds { get; set; } = 3600;
 
     /// <summary>
     /// default: 7200
     /// </summary>
-    public int RefreshTokenExpirySeconds { get; init; } = 7200;
+    public int RefreshTokenExpirySeconds { get; set; } = 7200;
 
     /// <summary>
     /// <para>enable get access_token from request url query param </para>
     /// <para>default: false</para>
     /// example: http://xxx.com?access_token=eyxxxxxxxxx
     /// </summary>
-    public bool EnableAccessTokenInUrlQuery { get; init; }
+    public bool EnableAccessTokenInUrlQuery { get; set; }
 
     /// <summary>
     /// <para>get access_token from request url query param</para>
     /// <para>default: access_token</para>
     /// example: http://xxx.com?access_token=eyxxxxxxxxx
     /// </summary>
-    public string AccessTokenUrlQueryKey { get; init; } = "access_token";
+    public string AccessTokenUrlQueryKey { get; set; } = "access_token";
 
     /// <summary>
     /// 
     /// </summary>
-    public string RefreshEndpointRole { get; init; } = "api_refresh";
+    public string RefreshEndpointRole { get; set; } = "api_refresh";
 
     public TokenValidationParameters CreateTokenValidationParameters(bool validateLifetime)
     {

@@ -1,11 +1,24 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace MinimalApi.Extensions.Security;
 
 public static class JwtBearerExtensions
 {
+    public static IServiceCollection AddJwtBearer(
+        this IServiceCollection services,
+        IConfiguration configuration,
+        Action<JwtBearerOptions>? jwtBearerOptionsAction = default,
+        Action<AuthorizationOptions>? authorizationOptionsAction = default)
+    {
+        var options = configuration.Get<SecurityJwtBearerOptions>();
+        if(options == null) throw new NullReferenceException(nameof(options));
+
+        return AddJwtBearer(services, options, jwtBearerOptionsAction, authorizationOptionsAction);
+    }
+
     /// <summary>
     /// <a href="https://learn.microsoft.com/zh-cn/aspnet/core/fundamentals/minimal-apis/security?view=aspnetcore-9.0">配置文档</a>
     /// </summary>
@@ -16,8 +29,8 @@ public static class JwtBearerExtensions
     public static IServiceCollection AddJwtBearer(
         this IServiceCollection services,
         SecurityJwtBearerOptions options,
-        Action<JwtBearerOptions>? customJwtBearerOptionsConfigure = default,
-        Action<AuthorizationOptions>? authorizationOptionsConfigure = default)
+        Action<JwtBearerOptions>? jwtBearerOptionsAction = default,
+        Action<AuthorizationOptions>? authorizationOptionsAction = default)
     {
         services.AddAuthentication(options =>
         {
@@ -44,12 +57,12 @@ public static class JwtBearerExtensions
                 };
             }
 
-            customJwtBearerOptionsConfigure?.Invoke(o);
+            jwtBearerOptionsAction?.Invoke(o);
         });
 
-        if(authorizationOptionsConfigure is not null)
+        if(authorizationOptionsAction is not null)
         {
-            services.AddAuthorization(authorizationOptionsConfigure);
+            services.AddAuthorization(authorizationOptionsAction);
         }
         else
         {

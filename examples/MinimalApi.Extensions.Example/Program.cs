@@ -16,7 +16,7 @@ builder.Services.ConfigureHttpJsonOptions(options =>
     options.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonSerializerContext.Default);
 });
 
-builder.Services.AddJwtBearer(new SecurityJwtBearerOptions() { SecretKey = "forbidden_watch_123123asdfasfsafsadfsfsa" });
+builder.Services.AddJwtBearer(builder.Configuration.GetSection("Jwt"));
 builder.Services.AddScalar(o => { o.UseJwtBearer = true; });
 
 builder.Services.AddAutoValidation().RegisterAllValidators();

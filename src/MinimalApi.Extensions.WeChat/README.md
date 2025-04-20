@@ -1,0 +1,2 @@
+## MinimalApi.Extensions.WeChat
+

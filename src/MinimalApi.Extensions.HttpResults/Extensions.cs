@@ -21,4 +21,9 @@ public static class Extensions
         ArgumentNullException.ThrowIfNull(resultExtensions);
         return new Custom200BadResult(error);
     }
+    public static Custom200BadWithCodeResult Bad(this IResultExtensions resultExtensions, int code, string error)
+    {
+        ArgumentNullException.ThrowIfNull(resultExtensions);
+        return new Custom200BadWithCodeResult(code, error);
+    }
 }

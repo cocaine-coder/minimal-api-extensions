@@ -5,9 +5,12 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\MinimalApi.Extensions.Attributes\MinimalApi.Extensions.Attributes.csproj" />
+	  <ProjectReference Include="..\MinimalApi.Extensions.EFCore.Npgsql\MinimalApi.Extensions.EFCore.Npgsql.csproj" />
+	  <ProjectReference Include="..\MinimalApi.Extensions.EFCore\MinimalApi.Extensions.EFCore.csproj" />
 	  <ProjectReference Include="..\MinimalApi.Extensions.HttpResults\MinimalApi.Extensions.HttpResults.csproj" />
 	  <ProjectReference Include="..\MinimalApi.Extensions.Scalar\MinimalApi.Extensions.Scalar.csproj" />
 	  <ProjectReference Include="..\MinimalApi.Extensions.Security\MinimalApi.Extensions.Security.csproj" />
 	  <ProjectReference Include="..\MinimalApi.Extensions.Validation\MinimalApi.Extensions.Validation.csproj" />
+	  <ProjectReference Include="..\MinimalApi.Extensions.WeChat\MinimalApi.Extensions.WeChat.csproj" />
 	</ItemGroup>
 </Project>
