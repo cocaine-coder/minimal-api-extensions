@@ -63,11 +63,9 @@ app.MapPost("create-cat", (Cat cat) =>
 
 ### aot 注入 validator
 
-**安装并设置代码生成器**
-```xml
-<ItemGroup>
- <PackageReference Include="MinimalApi.Extensions.SourceGeneration"  OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
-</ItemGroup>
+**安装**
+```shell
+dotnet add package MinimalApi.Extensions.SourceGeneration
 ```
 
 **代码注入**
