@@ -10,7 +10,6 @@
 	  <ProjectReference Include="..\MinimalApi.Extensions.HttpResults\MinimalApi.Extensions.HttpResults.csproj" />
 	  <ProjectReference Include="..\MinimalApi.Extensions.Scalar\MinimalApi.Extensions.Scalar.csproj" />
 	  <ProjectReference Include="..\MinimalApi.Extensions.Security\MinimalApi.Extensions.Security.csproj" />
-	  <ProjectReference Include="..\MinimalApi.Extensions.Validation\MinimalApi.Extensions.Validation.csproj" />
 	  <ProjectReference Include="..\MinimalApi.Extensions.WeChat\MinimalApi.Extensions.WeChat.csproj" />
 	</ItemGroup>
 </Project>

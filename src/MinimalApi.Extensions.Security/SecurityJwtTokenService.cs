@@ -1,8 +1,8 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using MinimalApi.Extensions.Security.Models;
-using System.IdentityModel.Tokens.Jwt;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using MinimalApi.Extensions.Security.Models;
 
 namespace MinimalApi.Extensions.Security;
 
@@ -24,7 +24,8 @@ public class SecurityJwtTokenService(SecurityJwtBearerOptions options)
             claims,
             now,
             accessTokenExpiries,
-            signingCredentials);
+            signingCredentials
+        );
 
         var refreshToken = new JwtSecurityToken(
             options.Issuer,
@@ -32,22 +33,24 @@ public class SecurityJwtTokenService(SecurityJwtBearerOptions options)
             [new Claim(ClaimTypes.Role, options.RefreshEndpointRole)],
             now,
             refreshTokenExpiries,
-            signingCredentials);
+            signingCredentials
+        );
 
         return new JwtTokenResponse()
         {
             AccessToken = jwtSecurityTokenHandler.WriteToken(accessToken),
             RefreshToken = jwtSecurityTokenHandler.WriteToken(refreshToken),
             AccessTokenExpiries = accessTokenExpiries,
-            RefreshTokenExpiries = refreshTokenExpiries
+            RefreshTokenExpiries = refreshTokenExpiries,
         };
     }
 
-    public JwtTokenResponse? RefreshToken<T>(T request) where T : RefreshTokenRequest
+    public JwtTokenResponse? RefreshToken<T>(T request)
+        where T : RefreshTokenRequest
     {
         var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
 
-        if (!jwtSecurityTokenHandler.CanReadToken(request.AccessToken))
+        if (!jwtSecurityTokenHandler.CanReadToken(request.RefreshToken))
         {
             return null;
         }
@@ -58,7 +61,11 @@ public class SecurityJwtTokenService(SecurityJwtBearerOptions options)
         SecurityToken? validatedToken;
         try
         {
-            jwtSecurityTokenHandler.ValidateToken(request.AccessToken, validateParameter, out validatedToken);
+            jwtSecurityTokenHandler.ValidateToken(
+                request.RefreshToken,
+                validateParameter,
+                out validatedToken
+            );
         }
         catch
         {
