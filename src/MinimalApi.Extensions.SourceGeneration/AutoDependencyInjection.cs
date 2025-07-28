@@ -115,6 +115,16 @@ public class AutoDependencyInjection : IIncrementalGenerator
                             }
                         }
 
+                        Debugger.Launch();
+
+                        if (attribute.ArgumentList!.Arguments.Count > 2)
+                        {
+                            var key = (
+                                attribute.ArgumentList!.Arguments.ElementAt(2).Expression
+                                as LiteralExpressionSyntax
+                            );
+                        }
+
                         code += $"services.Add{lifeTime}<{codeTemp}>();\r\n";
                     }
                 }
