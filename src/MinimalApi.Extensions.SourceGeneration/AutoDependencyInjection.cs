@@ -1,5 +1,4 @@
 ﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
 using System.Text;
 
@@ -13,22 +12,7 @@ namespace MinimalApi.Extensions.SourceGeneration
         public void Initialize(IncrementalGeneratorInitializationContext context)
         {
             // 1. 筛选带有 AutoDependencyInjectionAttribute 的类
-            var classDeclarations = context.SyntaxProvider
-                .CreateSyntaxProvider(
-                    predicate: static (node, _) => node is ClassDeclarationSyntax cds &&
-                        cds.AttributeLists.Count > 0,
-                    transform: static (ctx, _) =>
-                    {
-                        var classDecl = (ClassDeclarationSyntax)ctx.Node;
-                        var classSymbol = ctx.SemanticModel.GetDeclaredSymbol(classDecl);
-                        return classSymbol;
-                    })
-                .Where(static symbol => symbol is not null)
-                .Select((symbol, _) => symbol!)
-                .Where(static symbol =>
-                    symbol.GetAttributes().Any(ad =>
-                        ad.AttributeClass?.ToDisplayString() == targetAttributeName
-                    ));
+            var classDeclarations = context.FilterClassDeclarationsByAttribute(targetAttributeName);
 
             // 2. 收集需要的信息
             var compilationAndClasses = context.CompilationProvider.Combine(classDeclarations.Collect());
@@ -63,9 +47,11 @@ namespace MinimalApi.Extensions.SourceGeneration
                     {
                         public static class ServiceCollectionAutoDependencyInjectionExtensions
                         {
-                            public static void AutoRegisterAllServices(this IServiceCollection services)
+                            public static IServiceCollection AutoRegisterServices(this IServiceCollection services)
                             {
                                 {{injectCode}}
+
+                                return services;
                             }
                         }
                     }

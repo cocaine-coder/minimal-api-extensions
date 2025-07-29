@@ -1,7 +1,9 @@
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using MinimalApi.Extensions;
+using MinimalApi.Extensions.Example.Contracts.Configuration;
 using MinimalApi.Extensions.Example.Dtos;
 using MinimalApi.Extensions.Example.Services;
 using MinimalApi.Extensions.HttpResults;
@@ -21,7 +23,7 @@ builder.Services.AddScalar(o =>
     o.UseJwtBearer = true;
 });
 
-builder.Services.AutoRegisterAllServices();
+builder.Services.AutoConfigureOptions(builder.Configuration).AutoRegisterServices();
 
 var app = builder.Build();
 
@@ -85,6 +87,11 @@ static Results<Custom200BadResult, Custom200OkResult<int>> GetResultMul(int code
         return TypedResults.Extensions.Bad("123");
 }
 
+app.MapGet("oss-configuration", (IOptions<OSSConfiguration> options) =>
+{
+    return TypedResults.Extensions.Ok(options.Value);
+});
+
 app.MapScalar();
 
 app.Run();
@@ -94,4 +101,5 @@ app.Run();
 [JsonSerializable(typeof(string))]
 [JsonSerializable(typeof(int))]
 [JsonSerializable(typeof(bool?))]
+[JsonSerializable(typeof(OSSConfiguration))]
 public partial class AppJsonSerializerContext : JsonSerializerContext { }
