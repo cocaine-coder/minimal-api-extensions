@@ -11,8 +11,4 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.12.0" PrivateAssets="all" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\MinimalApi.Extensions.Attributes\MinimalApi.Extensions.Attributes.csproj" />
-	</ItemGroup>
 </Project>

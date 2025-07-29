@@ -2,19 +2,14 @@
 
 namespace MinimalApi.Extensions.Attributes;
 
-[AttributeUsage(AttributeTargets.Class)]
-public class AutoDependencyInjectionAttribute(
-    ServiceLifetime lifetime,
-    Type? interfaceType = null,
-    string? key = null,
-    bool useTry = false
-) : Attribute
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, Inherited = false, AllowMultiple = false)]
+public class AutoDependencyInjectionAttribute(ServiceLifetime lifetime) : Attribute
 {
     public ServiceLifetime Lifetime { get; } = lifetime;
 
-    public Type? InterfaceType { get; } = interfaceType;
+    public Type[]? InterfaceTypes { get; set; }
 
-    public string? Key { get; } = key;
+    public string? Key { get; set; }
 
-    public bool UseTry { get; } = useTry;
+    public bool UseTry { get; set; }
 }

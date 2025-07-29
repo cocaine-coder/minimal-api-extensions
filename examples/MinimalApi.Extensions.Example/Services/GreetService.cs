@@ -7,7 +7,7 @@ public interface IGreetService
     string SayHello(string name);
 }
 
-[AutoDependencyInjection(ServiceLifetime.Singleton, typeof(IGreetService))]
+[AutoDependencyInjection(ServiceLifetime.Singleton, InterfaceTypes = [typeof(IGreetService)])]
 internal class GreetService : IGreetService
 {
     public string SayHello(string name)
