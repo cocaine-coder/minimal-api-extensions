@@ -87,10 +87,13 @@ static Results<Custom200BadResult, Custom200OkResult<int>> GetResultMul(int code
         return TypedResults.Extensions.Bad("123");
 }
 
-app.MapGet("oss-configuration", (IOptions<OSSConfiguration> options) =>
-{
-    return TypedResults.Extensions.Ok(options.Value);
-});
+app.MapGet(
+    "oss-configuration",
+    (IOptions<OSSConfiguration> options) =>
+    {
+        return TypedResults.Extensions.Ok(options.Value);
+    }
+);
 
 app.MapScalar();
 
