@@ -2,8 +2,8 @@ name: Publish Nuget Package
 
 on:
   push:
-    tags:
-      - v*
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -14,7 +14,7 @@ jobs:
       - name: Setup .Net SDK
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 9.x
+          dotnet-version: 10.x
           include-prerelease: true
 
       #- name: Run Tests
