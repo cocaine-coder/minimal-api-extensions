@@ -1,6 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.OpenApi;
+
+#if NET9_0
 using Microsoft.OpenApi.Models;
+#elif NET10_0_OR_GREATER
+using Microsoft.OpenApi;
+#endif
 
 namespace MinimalApi.Extensions.Scalar;
 
@@ -13,7 +18,12 @@ public sealed class BearerSecuritySchemeTransformer(IAuthenticationSchemeProvide
         {
             // Add the security scheme at the document level
             var requirements = new Dictionary<string,
-              OpenApiSecurityScheme>
+#if NET9_0
+                OpenApiSecurityScheme
+#elif NET10_0_OR_GREATER
+                IOpenApiSecurityScheme
+#endif
+                >
             {
                 ["Bearer"] = new OpenApiSecurityScheme
                 {
@@ -29,8 +39,9 @@ public sealed class BearerSecuritySchemeTransformer(IAuthenticationSchemeProvide
             // Apply it as a requirement for all operations
             foreach (var operation in document.Paths.Values.SelectMany(path => path.Operations))
             {
-                operation.Value.Security.Add(new OpenApiSecurityRequirement
+                operation.Value.Security?.Add(new OpenApiSecurityRequirement
                 {
+#if NET9_0
                     [new OpenApiSecurityScheme
                     {
                         Reference = new OpenApiReference
@@ -39,6 +50,9 @@ public sealed class BearerSecuritySchemeTransformer(IAuthenticationSchemeProvide
                             Type = ReferenceType.SecurityScheme
                         }
                     }] = Array.Empty<string>()
+#elif NET10_0_OR_GREATER
+                    [new OpenApiSecuritySchemeReference("Bearer")] = []
+#endif
                 });
             }
         }
