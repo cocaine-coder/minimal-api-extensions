@@ -7,6 +7,14 @@
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
 
+	<PropertyGroup>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="True" PackagePath="\" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4" Condition="'$(TargetFramework)' == 'net9.0'"/>
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.7" Condition="'$(TargetFramework)' == 'net10.0'"/>

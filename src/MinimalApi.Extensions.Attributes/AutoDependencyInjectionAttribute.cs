@@ -2,7 +2,7 @@
 
 namespace MinimalApi.Extensions.Attributes;
 
-[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, Inherited = false, AllowMultiple = false)]
+[AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
 public class AutoDependencyInjectionAttribute(ServiceLifetime lifetime) : Attribute
 {
     public ServiceLifetime Lifetime { get; } = lifetime;

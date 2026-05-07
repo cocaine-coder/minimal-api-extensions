@@ -11,4 +11,9 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.12.0" PrivateAssets="all" />
 	</ItemGroup>
+
+	<!-- 关键配置 3：手动指定将生成的 DLL 打包到 analyzers 文件夹 -->
+	<ItemGroup>
+		<None Include="$(OutputPath)\netstandard2.0\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+	</ItemGroup>
 </Project>
